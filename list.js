@@ -2,8 +2,6 @@ const textArea = document.querySelector(".textArea");
 var countryName =  document.querySelector(".countryName");
 const flag =  document.querySelector(".flag");
 
-
-
 var ul = document.getElementById("country")
 
 const countries = [{ countryName: "Argentina", flag: "🇦🇷" },
@@ -45,7 +43,6 @@ display()
 
 var btn = document.getElementById("btn")
 btn.addEventListener("click", function () {
-    // var char 
 
     console.log(countryName.value, flag.value);
     var allCountries = { countryName: countryName.value, flag: flag.value}
@@ -62,50 +59,3 @@ btn.addEventListener("click", function () {
     display()
     console.log(countries);
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// 
-// 
-// // const flags = ["🇦🇷", "🇧🇷", "🇨🇱", "🇿🇲", "🇺🇬", "🇲🇼", "🇷🇼", "🇮🇪", "🇨🇭"];
-// 
-
-
-
-// 
-
-
-
-
-
-
-
-
-
