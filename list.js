@@ -1,14 +1,10 @@
-// const btn = document.querySelector(".btn");
 const textArea = document.querySelector(".textArea");
-const displayField = document.getElementsByClassName(".country");
 var countryName =  document.querySelector(".countryName");
 const flag =  document.querySelector(".flag");
 
 
 
 var ul = document.getElementById("country")
-// const flags = [, , , , , , , , ];
-var regex = /[\uD83C][\uDDE6-\uDDFF][\uD83C][\uDDE6-\uDDFF]/;
 
 const countries = [{ countryName: "Argentina", flag: "🇦🇷" },
 
@@ -32,7 +28,7 @@ const countries = [{ countryName: "Argentina", flag: "🇦🇷" },
 const display = () => countries.map(function (e, index) {
    
     var list = document.createElement('li');
-    list.innerText = e.countryName +'    '+e.flag //JSON.stringify()
+    list.innerText = e.countryName +'    '+e.flag 
 
     if (countries.includes(countries)){
         countries.push(countries);
@@ -51,7 +47,7 @@ var btn = document.getElementById("btn")
 btn.addEventListener("click", function () {
     // var char 
 
-    console.log(countryName.value, '0----', flag.value);
+    console.log(countryName.value, flag.value);
     var allCountries = { countryName: countryName.value, flag: flag.value}
     
     countries.push(allCountries)
