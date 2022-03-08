@@ -15,23 +15,17 @@ body {
     flex-direction: column;
     align-content: center;
     justify-content: center;
-    /* text-align: center; */
-    /* background-image: linear-gradient(rgba(224, 188, 26, 0.8),rgba(154, 155, 99, 0.8)),url(./unnamed\ \(1\).png); */
-    /* background-size: cover; */
-    /* background-repeat: no-repeat; */
-    /* border-radius: 25px; */
-    /* height: 150px; */
     position: sticky;
     top: 0;
     color: black;
     outline: none;
     transition: .6s ease;
-    /* border-radius: 25px; */
+    text-align: center;
+
 }
 
 
 .btn{
-    /* width: 150px; */
     margin: auto;
     height: 25px;
     background-color:whitesmoke;
@@ -41,3 +35,6 @@ body {
     transition: .6s ease;
     border-radius: 25px;
 }
+ul {
+    list-style-type: none;
+  }
