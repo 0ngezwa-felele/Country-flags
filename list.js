@@ -22,7 +22,17 @@ const countries = [{ countryName: "Argentina", flag: "🇦🇷" },
 
 { countryName: "Switzerland", flag: "🇨🇭" }];
 
+// var existingNames 
 
+// var colors = ["red","blue","green"];
+localStorage.setItem("my_colors", JSON.stringify(countries)); //store colors
+var storedColors = JSON.parse(localStorage.getItem("my_colors")); //get them back
+
+
+
+
+
+//displaying the list of countries
 const display = () => countries.map(function (e, index) {
    
     var list = document.createElement('li');
@@ -40,9 +50,9 @@ const display = () => countries.map(function (e, index) {
 
 display()
 
-
+//adding another country
 var btn = document.getElementById("btn")
-btn.addEventListener("click", function () {
+btn.addEventListener("click",()=> {
 
     console.log(countryName.value, flag.value);
     var allCountries = { countryName: countryName.value, flag: flag.value}
@@ -56,6 +66,45 @@ btn.addEventListener("click", function () {
 
 
     ul.innerText = ' '
+    display()
+    console.log(countries);
+})
+// sorting list alphabetically
+// const SortArray =(a, z) =>{
+//     if (a.countryName < z.countryName) {return -1;}
+//     if (a.flag > z.flag) {return 1;}
+  
+// }
+
+// var sorted = countries.sort(SortArray);
+// console.log(sorted);
+
+//ascending order
+var btn2 = document.getElementById("ascBTN")
+btn2.addEventListener("click",()=> {
+    const ascArray =(a, z) =>{
+        if (a.countryName < z.countryName) {return -1;}
+        if (a.flag > z.flag) {return 1;}
+      
+    }
+    countries.sort(ascArray)
+    ul.innerHTML = ''
+    display()
+    // var newArray = countries.sort(ascArray);
+    console.log(countries);
+})
+//descending order
+var btn3 = document.getElementById("descBTN")
+btn3.addEventListener("click", ()=> {
+    const descArray =(a, z) =>{
+        if (a.countryName < z.countryName) {return 1;}
+        if (a.flag > z.flag) {return -1;}
+      
+    }
+
+    // var newArray2 = countries.sort(descArray);
+    countries.sort(descArray)
+    ul.innerHTML = ''
     display()
     console.log(countries);
 })
