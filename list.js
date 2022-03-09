@@ -22,11 +22,13 @@ const countries = [{ countryName: "Argentina", flag: "🇦🇷" },
 
 { countryName: "Switzerland", flag: "🇨🇭" }];
 
-// var existingNames 
 
-// var colors = ["red","blue","green"];
-localStorage.setItem("my_colors", JSON.stringify(countries)); //store colors
-var storedColors = JSON.parse(localStorage.getItem("my_colors")); //get them back
+const sortedList = [];
+
+sortedList.push(countries);
+console.log(sortedList);
+localStorage.setItem('session', JSON.stringify(countries));
+console.log(countries)
 
 
 
@@ -57,8 +59,9 @@ btn.addEventListener("click",()=> {
     console.log(countryName.value, flag.value);
     var allCountries = { countryName: countryName.value, flag: flag.value}
     
-    countries.push(allCountries)
+    // countries.push(allCountries)
     if (!countries.includes(countryName.value)) {
+        countries.push(allCountries)
     }
      if(countryName != undefined){
          countryName = countryName.value
@@ -70,11 +73,15 @@ btn.addEventListener("click",()=> {
     console.log(countries);
 })
 // sorting list alphabetically
-// const SortArray =(a, z) =>{
+// const sortArray =(a, z) =>{
 //     if (a.countryName < z.countryName) {return -1;}
 //     if (a.flag > z.flag) {return 1;}
-  
 // }
+//     countries.sort(sortArray)
+//     ul.innerHTML = ''
+//     display()
+//     console.log(countries);
+
 
 // var sorted = countries.sort(SortArray);
 // console.log(sorted);
@@ -90,7 +97,6 @@ btn2.addEventListener("click",()=> {
     countries.sort(ascArray)
     ul.innerHTML = ''
     display()
-    // var newArray = countries.sort(ascArray);
     console.log(countries);
 })
 //descending order
@@ -102,7 +108,6 @@ btn3.addEventListener("click", ()=> {
       
     }
 
-    // var newArray2 = countries.sort(descArray);
     countries.sort(descArray)
     ul.innerHTML = ''
     display()
