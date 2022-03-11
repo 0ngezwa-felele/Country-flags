@@ -1,10 +1,12 @@
 const textArea = document.querySelector(".textArea");
-var countryName =  document.querySelector(".countryName");
-const flag =  document.querySelector(".flag");
+var countryName = document.querySelector(".countryName");
+const flag = document.querySelector(".flag");
+const all = document.querySelector(".all")
+// const search = document.querySelector(".search");
 
 var ul = document.getElementById("country")
 
-const countries = [{ countryName: "Argentina", flag: "🇦🇷" },
+let countries = [{ countryName: "Argentina", flag: "🇦🇷" },
 
 { countryName: "Brazil", flag: "🇧🇷" },
 
@@ -27,50 +29,56 @@ const sortedList = [];
 
 sortedList.push(countries);
 console.log(sortedList);
-localStorage.setItem('session', JSON.stringify(countries));
-console.log(countries)
 
+if (localStorage['session'] === undefined) {
+    localStorage.setItem('session', JSON.stringify(countries));
+} else {
+    countries = JSON.parse(localStorage.getItem('session'))
+}
+
+// console.log(countries)
 
 
 
 
 //displaying the list of countries
 const display = () => countries.map(function (e, index) {
-   
-    var list = document.createElement('li');
-    list.innerText = e.countryName +'    '+e.flag 
 
-    if (countries.includes(countries)){
+    var list = document.createElement('li');
+    list.innerText = e.countryName + '    ' + e.flag
+
+    if (countries.includes(countries)) {
         countries.push(countries);
-    } 
+    }
 
     ul.append(list)
-    console.log(countries[index])
-    
-    
+    // console.log(countries[index])
+
+
 })
 
 display()
 
 //adding another country
 var btn = document.getElementById("btn")
-btn.addEventListener("click",()=> {
+btn.addEventListener("click", () => {
 
     console.log(countryName.value, flag.value);
-    var allCountries = { countryName: countryName.value, flag: flag.value}
-    
-    // countries.push(allCountries)
+    var allCountries = { countryName: countryName.value, flag: flag.value }
+
+    countries.push(allCountries)
     if (!countries.includes(countryName.value)) {
-        countries.push(allCountries)
+
     }
-     if(countryName != undefined){
-         countryName = countryName.value
-     }
-
-
+    if (countryName != undefined) {
+        countryName = countryName.value
+    }
     ul.innerText = ' '
     display()
-    console.log(countries);
+    // console.log(countries);
+    localStorage.setItem('session', JSON.stringify(countries))
+
+
 })
 // sorting list alphabetically
 // const sortArray =(a, z) =>{
@@ -88,28 +96,97 @@ btn.addEventListener("click",()=> {
 
 //ascending order
 var btn2 = document.getElementById("ascBTN")
-btn2.addEventListener("click",()=> {
-    const ascArray =(a, z) =>{
-        if (a.countryName < z.countryName) {return -1;}
-        if (a.flag > z.flag) {return 1;}
-      
+btn2.addEventListener("click", () => {
+    const ascArray = (a, z) => {
+        if (a.countryName < z.countryName) { return -1; }
+        if (a.flag > z.flag) { return 1; }
+
     }
     countries.sort(ascArray)
     ul.innerHTML = ''
     display()
-    console.log(countries);
+    // console.log(countries);
+    localStorage.setItem('session', JSON.stringify(countries))
 })
 //descending order
 var btn3 = document.getElementById("descBTN")
-btn3.addEventListener("click", ()=> {
-    const descArray =(a, z) =>{
-        if (a.countryName < z.countryName) {return 1;}
-        if (a.flag > z.flag) {return -1;}
-      
+btn3.addEventListener("click", () => {
+    const descArray = (a, z) => {
+        if (a.countryName < z.countryName) { return 1; }
+        if (a.flag > z.flag) { return -1; }
+
     }
 
     countries.sort(descArray)
     ul.innerHTML = ''
     display()
-    console.log(countries);
+    // console.log(countries);
 })
+// Filter with alphabets
+
+
+var search = document.getElementById("search")
+search.addEventListener('keyup', (e) => {
+
+    let newArr = []
+    if (e.target.value) {
+
+        newArr = countries.filter(function (item) {
+            return item.countryName.startsWith(e.target.value)
+            
+
+        })
+
+    };
+    console.log(newArr);
+    ul.innerHTML = ''
+    display()
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // var searching
+    // searching = document.getElementById(".search")
+    // if (search != null) {
+    //     searching = search.value
+    // }else{
+    //     searching = null
+    // }
+    // console.log(countries);
+// })
+// e.innerHTML = filtered
+// console.log();
